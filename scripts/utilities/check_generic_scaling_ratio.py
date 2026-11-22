@@ -1,8 +1,8 @@
 import xml.etree.ElementTree as ET
 import numpy as np
 
-t_gen = ET.parse(r'd:\Documents\Elbow joint Project\Simulation and Analysis\Opensim Elbow model\Elbow_model (2).osim').getroot()
-t_s1 = ET.parse(r'd:\Documents\Elbow joint Project\Simulation and Analysis\Opensim Elbow model\Elbow_model-S1.osim').getroot()
+t_gen = ET.parse(r'BASE_DIR\Simulation and Analysis\Opensim Elbow model\Elbow_model (2).osim').getroot()
+t_s1 = ET.parse(r'BASE_DIR\Simulation and Analysis\Opensim Elbow model\Elbow_model-S1.osim').getroot()
 
 lig_names = ['aaUCL', 'caUCL', 'paUCL', 'pUCL', 'aAL', 'pAL', 'tUCL', 'amCAP', 'alCAP', 'pmCAP', 'plCAP']
 

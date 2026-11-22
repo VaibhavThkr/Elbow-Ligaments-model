@@ -1,5 +1,5 @@
 """
-Plot-vs-Table Concordance Audit Pipeline (Path B)
+Plot-vs-Table Concordance Audit Pipeline (Anatomical Axis Model)
 ================================================
 Compares the values displayed/plotted in Figures 4–11 and Figure S6
 against the exact values stored in:
@@ -15,14 +15,14 @@ import openpyxl
 import pandas as pd
 import numpy as np
 
-PATHB_DIR = r"D:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model"
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
-DATA_DIR = os.path.join(PATHB_DIR, "results", "Cross_Subject_Average")
-FIG_DIR = os.path.join(PATHB_DIR, "results", "figures", "manuscript_figures")
+PROJECT_DIR = r"PROJECT_DIR"
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
+DATA_DIR = os.path.join(PROJECT_DIR, "results", "Cross_Subject_Average")
+FIG_DIR = os.path.join(PROJECT_DIR, "results", "figures", "manuscript_figures")
 
 def audit_plots_vs_tables():
     print("=" * 80)
-    print("CHECKING PLOT-TO-TABLE CONCORDANCE (PATH B)")
+    print("CHECKING PLOT-TO-TABLE CONCORDANCE (ANATOMICAL AXIS MODEL)")
     print("=" * 80)
 
     # -------------------------------------------------------------------------

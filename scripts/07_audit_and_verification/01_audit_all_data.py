@@ -1,7 +1,7 @@
 """
-Comprehensive Data Integrity, Truth, and Validity Audit Suite (Path B)
+Comprehensive Data Integrity, Truth, and Validity Audit Suite (Anatomical Axis Model)
 ======================================================================
-Performs an exhaustive cross-check across all 10 areas of Path B:
+Performs an exhaustive cross-check across all 10 areas of Anatomical Axis Model:
   1. Model Geometry & Resting Lengths (.osim files)
   2. Simulation Raw Output Files (.sto files)
   3. Participant Workbooks (24 Excel files)
@@ -22,12 +22,12 @@ import pandas as pd
 from PIL import Image
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PATHB_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
-MODELS_DIR = os.path.join(PATHB_DIR, "models", "calibrated_devita_nlsr")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
-DATA_DIR = os.path.join(PATHB_DIR, "results", "Cross_Subject_Average")
-FIG_DIR = os.path.join(PATHB_DIR, "results", "figures")
+PROJECT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
+MODELS_DIR = os.path.join(PROJECT_DIR, "models", "calibrated_devita_nlsr")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
+DATA_DIR = os.path.join(PROJECT_DIR, "results", "Cross_Subject_Average")
+FIG_DIR = os.path.join(PROJECT_DIR, "results", "figures")
 MANUSCRIPT_FIGS = os.path.join(FIG_DIR, "manuscript_figures")
 STACKED_FIGS = os.path.join(FIG_DIR, "stacked_neon_plots")
 
@@ -47,7 +47,7 @@ PRIMARY_LIGS = ['pRCL', 'LUCL', 'aaUCL', 'caUCL', 'paUCL', 'pUCL', 'pmCAP', 'plC
 def audit_suite():
     audit_results = {}
     print("=" * 80)
-    print("STARTING COMPREHENSIVE DATA INTEGRITY, TRUTH & VALIDITY AUDIT (PATH B)")
+    print("STARTING COMPREHENSIVE DATA INTEGRITY, TRUTH & VALIDITY AUDIT (ANATOMICAL AXIS MODEL)")
     print("=" * 80)
 
     # -------------------------------------------------------------------------
@@ -119,7 +119,7 @@ def audit_suite():
                 area1_details.append(f"FAIL: {sid} failed biophysical check: {label}")
 
     if area1_pass:
-        print("  -> AREA 1 PASSED: All 6 models have exact Option A fan coordinates, calibrated L0 values, and lucl_wrap_post fully eradicated.")
+        print("  -> AREA 1 PASSED: All 6 models have exact calibrated fan coordinates, calibrated L0 values, and lucl_wrap_post fully eradicated.")
     else:
         print("  -> AREA 1 FAILED:\n    " + "\n    ".join(area1_details))
     audit_results['Area1_Model_Geometry'] = area1_pass

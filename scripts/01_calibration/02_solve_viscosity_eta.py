@@ -9,7 +9,7 @@ from scipy import special, signal, optimize
 
 # Fast tempo length trajectory on cohort mean
 # Let's load the cohort average length from Bicep_CrossSubject_Lengths.xlsx
-cross_len_path = r"d:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\results\Cross_Subject_Average\Bicep_CrossSubject_Lengths.xlsx"
+cross_len_path = r"PROJECT_DIR\results\Cross_Subject_Average\Bicep_CrossSubject_Lengths.xlsx"
 xf = pd.ExcelFile(cross_len_path)
 
 dt = 0.01 # 100 Hz time-normalized or 1.0s total duration for Fast tempo

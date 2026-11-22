@@ -1,6 +1,6 @@
 import os, glob, xml.etree.ElementTree as ET
 
-for root, dirs, files in os.walk(r'd:\Documents\Elbow joint Project'):
+for root, dirs, files in os.walk(r'BASE_DIR'):
     for f in files:
         if f.endswith('.xml'):
             fp = os.path.join(root, f)

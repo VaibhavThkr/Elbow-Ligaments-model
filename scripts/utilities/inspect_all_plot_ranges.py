@@ -2,8 +2,8 @@ import os
 import pandas as pd
 import numpy as np
 
-path_b = r'd:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model'
-data_dir = os.path.join(path_b, 'results', 'Cross_Subject_Average')
+model = r'PROJECT_DIR'
+data_dir = os.path.join(model, 'results', 'Cross_Subject_Average')
 
 wb_forces = pd.read_excel(os.path.join(data_dir, 'Bicep_CrossSubject_Forces.xlsx'), sheet_name=None)
 wb_strains = pd.read_excel(os.path.join(data_dir, 'Bicep_CrossSubject_Strains.xlsx'), sheet_name=None)

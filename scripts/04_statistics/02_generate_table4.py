@@ -1,11 +1,11 @@
 """
-Phase 4 (Part 2): Generate Table 4 & Participant Peak Metrics (Path B)
+Phase 4 (Part 2): Generate Table 4 & Participant Peak Metrics (Anatomical Axis Model)
 =====================================================================
-Processes the generated participant Excel workbooks from Path B to produce:
+Processes the generated participant Excel workbooks from Anatomical Axis Model to produce:
   1. Table4_Participant_and_Cohort_Peaks.xlsx in results/tables/
   2. Calibrated_Model_Participant_Level_Results_and_Repetitions.xlsx in results/tables/
 
-Integrates Option A: 3-Fiber RCL Fan (aRCL, cRCL, pRCL, RCL_Total) + LUCL + Medial + Capsular.
+Integrates 3-Fiber Fan: 3-Fiber RCL Fan (aRCL, cRCL, pRCL, RCL_Total) + LUCL + Medial + Capsular.
 """
 
 import os
@@ -20,11 +20,11 @@ import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-MODEL_DIR = os.path.join(PATHB_DIR, "models", "calibrated_devita_nlsr")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+MODEL_DIR = os.path.join(PROJECT_DIR, "models", "calibrated_devita_nlsr")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
 os.makedirs(TABLES_DIR, exist_ok=True)
 
 OUT_FILE = os.path.join(TABLES_DIR, "Table4_Participant_and_Cohort_Peaks.xlsx")
@@ -119,7 +119,7 @@ def get_calibrated_l0_from_osim(model_path):
 
 def extract_participant_peaks():
     print("=" * 70)
-    print("EXTRACTING PATH B PARTICIPANT-LEVEL PEAKS & LIGAMENT METRICS")
+    print("EXTRACTING PARTICIPANT-LEVEL PEAKS & LIGAMENT METRICS")
     print("=" * 70)
     
     rows = []

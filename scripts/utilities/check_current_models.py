@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
 for s in ['S1', 'S2', 'S3', 'S4', 'S5', 'S6']:
-    p = rf'd:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\models\calibrated_devita_nlsr\Elbow_model-{s}.osim'
+    p = rf'PROJECT_DIR\models\calibrated_devita_nlsr\Elbow_model-{s}.osim'
     t = ET.parse(p).getroot()
     print(f'=== {s} ===')
     for lig in ['cRCL', 'aRCL', 'pRCL', 'LUCL']:

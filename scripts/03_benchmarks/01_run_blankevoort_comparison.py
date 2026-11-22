@@ -1,8 +1,8 @@
 """
-Phase 5 (Part 2): Method A vs Method B Benchmark Comparison (Table 6) (Path B)
+Phase 5 (Part 2): Method A vs Method B Benchmark Comparison (Table 6) (Anatomical Axis Model)
 ==============================================================================
 Compares Elastic Blankevoort (1991) vs. Damped Blankevoort (OpenSim 4.x) vs.
-Calibrated DeVita NLSR (Path B Anatomical Model) across all 6 participants.
+Calibrated DeVita NLSR (Anatomical Axis Elbow Model) across all 6 participants.
 
 Outputs:
   Table6_MethodA_Model_Comparison_Benchmark.xlsx in results/tables/
@@ -16,10 +16,10 @@ import pandas as pd
 import scipy.special as special
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PATHB_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
-MODEL_DIR = os.path.join(PATHB_DIR, "models", "calibrated_devita_nlsr")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
+PROJECT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
+MODEL_DIR = os.path.join(PROJECT_DIR, "models", "calibrated_devita_nlsr")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
 os.makedirs(TABLES_DIR, exist_ok=True)
 
 OUT_FILE = os.path.join(TABLES_DIR, "Table6_MethodA_Model_Comparison_Benchmark.xlsx")
@@ -110,7 +110,7 @@ def get_calibrated_l0_from_osim(model_path):
 
 def run_comparison():
     print("=" * 70)
-    print("RUNNING TABLE 6: METHOD A VS METHOD B BENCHMARK COMPARISON (PATH B)")
+    print("RUNNING TABLE 6: METHOD A VS METHOD B BENCHMARK COMPARISON (ANATOMICAL AXIS MODEL)")
     print("=" * 70)
     
     # Preload length and strain rate workbooks for all subjects

@@ -32,12 +32,12 @@ from matplotlib.ticker import FormatStrFormatter, FuncFormatter
 from PIL import Image
 
 # Paths
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-DATA_DIR = os.path.join(PATHB_DIR, "results", "Cross_Subject_Average")
-OUT_DIR = os.path.join(PATHB_DIR, "results", "figures", "stacked_neon_plots")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+DATA_DIR = os.path.join(PROJECT_DIR, "results", "Cross_Subject_Average")
+OUT_DIR = os.path.join(PROJECT_DIR, "results", "figures", "stacked_neon_plots")
 ARTIFACT_DIR = r"C:/Users/vaibh/.gemini/antigravity/brain/1480b829-4eb3-4948-8aae-83a7b237bdf1"
-ARTIFACT_OUT_DIR = os.path.join(ARTIFACT_DIR, "calibrated_stacked_plots_pathb")
+ARTIFACT_OUT_DIR = os.path.join(ARTIFACT_DIR, "calibrated_stacked_plots_model")
 
 os.makedirs(OUT_DIR, exist_ok=True)
 os.makedirs(ARTIFACT_OUT_DIR, exist_ok=True)

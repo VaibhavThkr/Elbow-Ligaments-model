@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <OpenSimDocument Version="40000">
 	<AnalyzeTool name="3B_rest_fast_right">
-		<model_file>d:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\models\calibrated_devita_nlsr\Elbow_model-S3.osim</model_file>
+		<model_file>../../../../models/calibrated_devita_nlsr/Elbow_model-S3.osim</model_file>
 		<replace_force_set>false</replace_force_set>
 		<force_set_files />
-		<results_directory>d:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\simulations\3_S3 Bicep\Analysis Results\3B_rest_fast_right</results_directory>
+		<results_directory>.</results_directory>
 		<output_precision>8</output_precision>
 		<initial_time>0.0</initial_time>
 		<final_time>53.488</final_time>

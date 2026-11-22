@@ -1,7 +1,7 @@
 """
-Phase 7: Publication Figures Re-Rendering Pipeline (Path B Anatomical Axis Model)
+Phase 7: Publication Figures Re-Rendering Pipeline (Anatomical Axis Elbow Model)
 ================================================================================
-Generates all manuscript publication figures reflecting Path B Option A:
+Generates all manuscript publication figures reflecting Anatomical Axis 3-Fiber Fan Model:
   - 3-Fiber Fan RCL (cRCL on axis, aRCL anterior, pRCL posterior)
   - LUCL realigned 2.0 mm posterior to flexion axis without wrapping cylinder
   - Fully retuned structural viscosity (eta*)
@@ -40,20 +40,20 @@ from PIL import Image
 # -------------------------------------------------------------
 # Base Directories
 # -------------------------------------------------------------
-BASE_DIR = r"D:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-DATA_DIR = os.path.join(PATHB_DIR, "results", "Cross_Subject_Average")
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+DATA_DIR = os.path.join(PROJECT_DIR, "results", "Cross_Subject_Average")
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
 ORIG_SIM_DIR = os.path.join(BASE_DIR, "Simulation and Analysis")
 
-FIG_DIR = os.path.join(PATHB_DIR, "results", "figures")
+FIG_DIR = os.path.join(PROJECT_DIR, "results", "figures")
 STACKED_DIR = os.path.join(FIG_DIR, "stacked_neon_plots")
 MANUSCRIPT_DIR = os.path.join(FIG_DIR, "manuscript_figures")
 
 ARTIFACT_DIR = r"C:\Users\vaibh\.gemini\antigravity\brain\1480b829-4eb3-4948-8aae-83a7b237bdf1"
-ARTIFACT_FIG_DIR = os.path.join(ARTIFACT_DIR, "manuscript_figures_pathb")
-ARTIFACT_STACKED_DIR = os.path.join(ARTIFACT_DIR, "calibrated_stacked_plots_pathb")
+ARTIFACT_FIG_DIR = os.path.join(ARTIFACT_DIR, "manuscript_figures_model")
+ARTIFACT_STACKED_DIR = os.path.join(ARTIFACT_DIR, "calibrated_stacked_plots_model")
 
 for d in [FIG_DIR, STACKED_DIR, MANUSCRIPT_DIR, ARTIFACT_FIG_DIR, ARTIFACT_STACKED_DIR]:
     os.makedirs(d, exist_ok=True)
@@ -155,8 +155,8 @@ SUBJECTS = [
     ("S6", "Rahul",  "6_S6 Bicep", "6B")
 ]
 
-# Path B Calibrated resting lengths L0 (in mm) - Cohort Mean
-PATHB_CALIBRATED_L0 = {
+# Calibrated resting lengths L0 (in mm) - Cohort Mean
+CALIBRATED_L0 = {
     'cRCL':  20.66,
     'aRCL':  21.19,
     'pRCL':  21.18,
@@ -171,7 +171,7 @@ PATHB_CALIBRATED_L0 = {
 }
 
 def load_cross_subject_workbooks():
-    print("Loading Path B Cross-Subject Average Data...")
+    print("Loading Cross-Subject Average Data...")
     wb_data = {}
     for var in ['Forces', 'Lengths', 'Strains', 'StrainRates']:
         p = os.path.join(DATA_DIR, f"Bicep_CrossSubject_{var}.xlsx")
@@ -757,7 +757,7 @@ def generate_figure_s6():
         'plCAP': '(h) Posterolateral Capsule (plCAP)'
     }
     
-    # Extract lengths from Path B simulations
+    # Extract lengths from simulations
     subject_curves = {st: {} for st in ['aaUCL', 'caUCL', 'paUCL', 'pUCL', 'aRCL', 'cRCL', 'pRCL', 'LUCL', 'pmCAP', 'plCAP']}
     
     trials = ["nor_fast", "nor_med", "nor_slow", "rest_fast", "rest_med", "rest_slow"]
@@ -831,7 +831,7 @@ def generate_figure_s6():
         color = primary_colors[st_key]
         
         if st_key == 'RCL':
-            # Option A 3-Fiber Fan Plot
+            # 3-Fiber RCL Fan Plot
             m_c = cohort_stats['cRCL']['mean']
             s_c = cohort_stats['cRCL']['std']
             m_a = cohort_stats['aRCL']['mean']
@@ -845,14 +845,14 @@ def generate_figure_s6():
             ax.plot(grid_flex, m_a, color='#2ca02c', linewidth=2.2, linestyle='-.', label=r'aRCL (+1.5 mm ant, $\Delta L=-2.4\,$mm)')
             ax.plot(grid_flex, m_p, color='#ff7f0e', linewidth=2.2, linestyle=':', label=r'pRCL (-1.5 mm post, $\Delta L=+2.4\,$mm)')
             
-            l0_crcl = PATHB_CALIBRATED_L0['cRCL']
+            l0_crcl = CALIBRATED_L0['cRCL']
             ax.axhline(l0_crcl, color='#b22222', linestyle=':', linewidth=1.6, label=f'$L_0 = {l0_crcl:.1f}\\,\\mathrm{{mm}}$')
             
             ax.set_ylim(17.0, 23.5)
             ax.set_yticks([17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0])
             ax.yaxis.set_major_formatter(clean_formatter('%.1f'))
             
-            annot_text = (f"Option A 3-Fiber Fan\n"
+            annot_text = (f"3-Fiber RCL Fan\n"
                           f"cRCL: {l0_crcl:.2f} mm (Isometric)\n"
                           f"aRCL: Taut 0°–35°\n"
                           f"pRCL: Taut 57°–145°")
@@ -870,7 +870,7 @@ def generate_figure_s6():
         else:
             m = cohort_stats[st_key]['mean']
             s = cohort_stats[st_key]['std']
-            l0 = PATHB_CALIBRATED_L0[st_key]
+            l0 = CALIBRATED_L0[st_key]
             
             # Plot individual S1-S6
             for s_id, _, _, _ in SUBJECTS:
@@ -916,7 +916,7 @@ def generate_figure_s6():
                 'Max Length (mm)': round(cohort_stats[st_key]['max'], 2),
                 'ROM Elongation ΔL (mm)': round(cohort_stats[st_key]['delta'], 2),
                 'Engagement Range': f">= {grid_flex[np.where(m >= l0)[0][0]]}°" if np.any(m >= l0) else "Slack",
-                'Status': 'Smooth Path B Kinematics'
+                'Status': 'Smooth Anatomical Axis Model Kinematics'
             })
             
         ax.set_title(struct_titles[st_key], fontsize=11.5, fontweight='bold', pad=8)
@@ -971,7 +971,7 @@ def generate_figure_s6():
         df_cohort.to_excel(writer, sheet_name="Cohort_Mean_and_SD", index=False)
         df_indiv.to_excel(writer, sheet_name="Individual_Participants", index=False)
         
-    shutil.copy2(excel_path, os.path.join(ARTIFACT_DIR, "Fig_S6_Ligament_Length_vs_Elbow_Flexion_PathB.xlsx"))
+    shutil.copy2(excel_path, os.path.join(ARTIFACT_DIR, "Fig_S6_Ligament_Length_vs_Elbow_Flexion.xlsx"))
     print(f"  [SAVED] Excel Workbook: {excel_path}")
 
 # ==============================================================================

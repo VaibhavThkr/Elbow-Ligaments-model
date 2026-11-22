@@ -1,8 +1,8 @@
 import re, glob, os
 import pandas as pd
 
-models = sorted(glob.glob(r'd:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\models\calibrated_devita_nlsr\Elbow_model-S*.osim'))
-print(f"Found {len(models)} Path B models.")
+models = sorted(glob.glob(r'PROJECT_DIR\models\calibrated_devita_nlsr\Elbow_model-S*.osim'))
+print(f"Found {len(models)} calibrated models.")
 
 for mpath in models:
     fname = os.path.basename(mpath)
@@ -17,7 +17,7 @@ for mpath in models:
             print(f"  {lig}: {pts}")
 
 # Also check original models in Simulation and Analysis
-orig_models = sorted(glob.glob(r'd:\Documents\Elbow joint Project\Simulation and Analysis\*\Elbow_model-*.osim'))
+orig_models = sorted(glob.glob(r'BASE_DIR\Simulation and Analysis\*\Elbow_model-*.osim'))
 print(f"\nFound {len(orig_models)} original models.")
 for mpath in orig_models:
     fname = os.path.basename(mpath)

@@ -1,5 +1,5 @@
 """
-Phase 8: Comprehensive Numerical Concordance Audit Pipeline (Path B)
+Phase 8: Comprehensive Numerical Concordance Audit Pipeline (Anatomical Axis Model)
 ====================================================================
 Cross-references:
   - Table 4 (Participant and Cohort Peaks)
@@ -13,9 +13,9 @@ import os
 import pandas as pd
 import numpy as np
 
-PATHB_DIR = r"D:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model"
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
-DATA_DIR = os.path.join(PATHB_DIR, "results", "Cross_Subject_Average")
+PROJECT_DIR = r"PROJECT_DIR"
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
+DATA_DIR = os.path.join(PROJECT_DIR, "results", "Cross_Subject_Average")
 
 def run_audit():
     print("=" * 70)

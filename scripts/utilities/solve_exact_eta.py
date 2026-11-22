@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from scipy import special, signal, optimize
 
-cross_len_path = r"d:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\results\Cross_Subject_Average\Bicep_CrossSubject_Lengths.xlsx"
+cross_len_path = r"PROJECT_DIR\results\Cross_Subject_Average\Bicep_CrossSubject_Lengths.xlsx"
 xf = pd.ExcelFile(cross_len_path)
 dt = 0.01
 

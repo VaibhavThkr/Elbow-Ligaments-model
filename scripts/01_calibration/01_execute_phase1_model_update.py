@@ -22,7 +22,7 @@ import re
 import numpy as np
 import xml.etree.ElementTree as ET
 
-MODELS_DIR = r"d:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\models\calibrated_devita_nlsr"
+MODELS_DIR = r"PROJECT_DIR\models\calibrated_devita_nlsr"
 
 # Subject scale factors relative to S1 baseline
 SCALE_FACTORS = {

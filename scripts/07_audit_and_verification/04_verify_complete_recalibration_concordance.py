@@ -2,7 +2,7 @@
 Comprehensive Verification and Concordance Audit Script
 ======================================================
 Verifies 100% mathematical, biophysical, and cross-document concordance across
-the entire Path B (Option A) calibrated elbow model implementation.
+the entire Anatomical Axis Model calibrated elbow model implementation.
 
 Checks:
   1. Participant-specific scaling & L0 in all 6 .osim models
@@ -22,12 +22,12 @@ import numpy as np
 import pandas as pd
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PATHB_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
-MODEL_DIR = os.path.join(PATHB_DIR, "models", "calibrated_devita_nlsr")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
-CROSS_DIR = os.path.join(PATHB_DIR, "results", "Cross_Subject_Average")
-FIG_DIR = os.path.join(PATHB_DIR, "results", "figures", "manuscript_figures")
+PROJECT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
+MODEL_DIR = os.path.join(PROJECT_DIR, "models", "calibrated_devita_nlsr")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
+CROSS_DIR = os.path.join(PROJECT_DIR, "results", "Cross_Subject_Average")
+FIG_DIR = os.path.join(PROJECT_DIR, "results", "figures", "manuscript_figures")
 
 SUBJECTS = [
     ("S1", "Gokul",  "1_S1 Bicep", "1B"),
@@ -42,7 +42,7 @@ EXPECTED_TRIALS = ["nor_fast", "nor_med", "nor_slow", "rest_fast", "rest_med", "
 
 def audit():
     print("=" * 80)
-    print("STARTING COMPREHENSIVE PATH B RE-CALIBRATION CONCORDANCE AUDIT")
+    print("STARTING COMPREHENSIVE RE-CALIBRATION CONCORDANCE AUDIT")
     print("=" * 80)
     
     all_passed = True

@@ -1,10 +1,10 @@
 """
-Phase 4: Excel Data Generation for Path B Anatomical Axis Model
+Phase 4: Excel Data Generation for Anatomical Axis Elbow Model
 ==============================================================
 Extracts repetition-averaged, time-normalized (0% to 100% cycle) data from the
 generated .sto simulation files across all 35 trials and 6 subjects.
 
-Integrates Option A: 3-Fiber RCL Fan (aRCL, cRCL, pRCL) + LUCL + Medial + Capsular structures.
+Integrates 3-Fiber Fan: 3-Fiber RCL Fan (aRCL, cRCL, pRCL) + LUCL + Medial + Capsular structures.
 
 Generates 4 Excel workbooks per subject:
   1. <Subject>_Forces.xlsx
@@ -28,11 +28,11 @@ from scipy.signal import find_peaks, butter, filtfilt
 from scipy.interpolate import interp1d
 from scipy import special
 
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-MODEL_DIR = os.path.join(PATHB_DIR, "models", "calibrated_devita_nlsr")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
-RESULTS_DIR = os.path.join(PATHB_DIR, "results")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+MODEL_DIR = os.path.join(PROJECT_DIR, "models", "calibrated_devita_nlsr")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
+RESULTS_DIR = os.path.join(PROJECT_DIR, "results")
 CROSS_DIR = os.path.join(RESULTS_DIR, "Cross_Subject_Average")
 os.makedirs(CROSS_DIR, exist_ok=True)
 
@@ -56,7 +56,7 @@ SUBJECTS = [
 FILTER_CUTOFF = 15.0  # Hz
 FILTER_ORDER = 4
 
-# Path B Calibrated Constitutive Properties
+# Calibrated Constitutive Properties
 LIGAMENT_PROPS = {
     # 3-Fiber RCL Fan
     'aRCL':  {'alpha': 1.01, 'beta': 0.080, 'K': 49.2,  'eta': 3.7570, 'area': 5.67,  'F_uts': 36.67},
@@ -172,7 +172,7 @@ def get_calibrated_l0_from_osim(model_path):
             rl_match = re.search(r'<resting_length>(.*?)</resting_length>', block)
             if rl_match:
                 l0_dict[lig] = float(rl_match.group(1))
-    # Fallbacks for Path B sub-fibers if not directly named in NonLinearLigament
+    # Fallbacks for sub-fibers if not directly named in NonLinearLigament
     if 'aRCL' not in l0_dict: l0_dict['aRCL'] = 0.02000
     if 'cRCL' not in l0_dict: l0_dict['cRCL'] = 0.01973
     if 'pRCL' not in l0_dict: l0_dict['pRCL'] = 0.02030
@@ -182,7 +182,7 @@ def get_calibrated_l0_from_osim(model_path):
 
 def process_subject(sid, name, bicep_folder, prefix):
     print(f"\n=======================================================")
-    print(f"PROCESSING PATH B DATA FOR: {sid} ({name.upper()})")
+    print(f"PROCESSING PARTICIPANT DATA FOR: {sid} ({name.upper()})")
     print(f"=======================================================")
     
     analysis_dir = os.path.join(SIM_DIR, bicep_folder, "Analysis Results")
@@ -389,7 +389,7 @@ def export_subject_excels(analysis_dir, sid, name, grand_means, conditions, pref
 
 def export_cross_subject_excels():
     print("\n==================================================================")
-    print("COMPUTING PATH B CROSS-SUBJECT GRAND AVERAGES")
+    print("COMPUTING CROSS-SUBJECT GRAND AVERAGES")
     print("==================================================================")
     
     variables = ['Forces', 'Lengths', 'Strains', 'StrainRates']
@@ -435,13 +435,13 @@ def export_cross_subject_excels():
 
 def main():
     print("==================================================================")
-    print("STARTING PATH B PARTICIPANT EXCEL GENERATION (ALL 6 PARTICIPANTS)")
+    print("STARTING PARTICIPANT EXCEL GENERATION (ALL 6 PARTICIPANTS)")
     print("==================================================================")
     for sid, name, bicep_folder, prefix in SUBJECTS:
         process_subject(sid, name, bicep_folder, prefix)
     export_cross_subject_excels()
     print("\n==================================================================")
-    print("PATH B EXCEL GENERATION PIPELINE COMPLETE!")
+    print("EXCEL GENERATION PIPELINE COMPLETE!")
     print("==================================================================")
 
 if __name__ == "__main__":

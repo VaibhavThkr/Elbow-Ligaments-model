@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-tree = ET.parse(r'd:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\models\calibrated_devita_nlsr\Elbow_model-S1.osim')
+tree = ET.parse(r'PROJECT_DIR\models\calibrated_devita_nlsr\Elbow_model-S1.osim')
 root = tree.getroot()
 
 for lig in ['aRCL', 'cRCL', 'pRCL', 'LUCL', 'ALCL']:

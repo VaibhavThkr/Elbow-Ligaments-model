@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
-t1 = ET.parse(r'd:\Documents\Elbow joint Project\02_Earlier_Versions_Archive\legacy_models\Elbow_model-Gokul.osim.backup').getroot()
-t2 = ET.parse(r'd:\Documents\Elbow joint Project\02_Earlier_Versions_Archive\legacy_models\Elbow_model-Sanyam.osim.backup').getroot()
+t1 = ET.parse(r'BASE_DIR\02_Earlier_Versions_Archive\legacy_models\Elbow_model-Gokul.osim.backup').getroot()
+t2 = ET.parse(r'BASE_DIR\02_Earlier_Versions_Archive\legacy_models\Elbow_model-Sanyam.osim.backup').getroot()
 
 diffs = []
 for e1, e2 in zip(t1.iter(), t2.iter()):

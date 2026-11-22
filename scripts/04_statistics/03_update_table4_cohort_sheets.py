@@ -19,10 +19,10 @@ import pandas as pd
 import numpy as np
 
 # File Paths
-PATHB_DIR = r"d:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model"
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
+PROJECT_DIR = r"PROJECT_DIR"
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
 MASTER_XLSX = os.path.join(TABLES_DIR, "Table4_Participant_and_Cohort_Peaks.xlsx")
-RERUN_LATERAL_XLSX = os.path.join(TABLES_DIR, "PathB_All_Participant_Peaks_Rerun.xlsx")
+RERUN_LATERAL_XLSX = os.path.join(TABLES_DIR, "All_Participant_Peaks_Rerun.xlsx")
 
 ARTIFACT_DIR = r"C:/Users/vaibh/.gemini/antigravity/brain/1480b829-4eb3-4948-8aae-83a7b237bdf1"
 ARTIFACT_MASTER_XLSX = os.path.join(ARTIFACT_DIR, "Table4_Participant_and_Cohort_Peaks.xlsx")

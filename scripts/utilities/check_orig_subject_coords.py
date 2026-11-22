@@ -1,7 +1,7 @@
 import re
 
 for s in ['S1', 'S2', 'S3', 'S4', 'S5', 'S6']:
-    fp = rf'd:\Documents\Elbow joint Project\Simulation and Analysis\Opensim Elbow model\Elbow_model-{s}.osim'
+    fp = rf'BASE_DIR\Simulation and Analysis\Opensim Elbow model\Elbow_model-{s}.osim'
     with open(fp, 'r', encoding='utf-8') as f:
         text = f.read()
     

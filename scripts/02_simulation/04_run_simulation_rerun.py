@@ -1,8 +1,8 @@
 """
-Path B Final Rerun Script: Lateral Collateral Ligament Bands (aRCL, cRCL, pRCL, LUCL)
+Final Simulation Rerun Script: Lateral Collateral Ligament Bands (aRCL, cRCL, pRCL, LUCL)
 =====================================================================================
 Implements the exact user requirements:
-1. Exact L0 per participant from PathB_rerun_inputs.xlsx (sheet L0).
+1. Exact L0 per participant from calibrated_rerun_inputs.xlsx (sheet L0).
 2. Constitutive parameters:
    - aRCL, cRCL, pRCL: K = 49.2 MPa, alpha = 1.01, beta = 0.080, eta* = 5.17 MPa*s, A = 5.67 mm², F_uts = 36.67 N
    - LUCL: K = 49.2 MPa, alpha = 1.01, beta = 0.080, eta* = 5.63 MPa*s, A = 13.35 mm², F_uts = 102.4 N
@@ -28,10 +28,10 @@ from scipy.signal import butter, filtfilt, find_peaks
 from scipy.interpolate import interp1d
 
 # Paths
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
-RESULTS_DIR = os.path.join(PATHB_DIR, "results")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
+RESULTS_DIR = os.path.join(PROJECT_DIR, "results")
 TABLES_DIR = os.path.join(RESULTS_DIR, "tables")
 CROSS_DIR = os.path.join(RESULTS_DIR, "Cross_Subject_Average")
 FIGS_DIR = os.path.join(RESULTS_DIR, "figures", "manuscript_figures")
@@ -171,7 +171,7 @@ def get_ligament_column(df, lig_name):
 
 def main():
     print("=" * 80)
-    print("STARTING PATH B FINAL REAL-TIME PIPELINE RERUN FOR LATERAL BANDS")
+    print("STARTING FINAL REAL-TIME PIPELINE RERUN FOR LATERAL BANDS")
     print("=" * 80)
     
     all_peaks_rows = []
@@ -449,8 +449,8 @@ def main():
     print(f"\nDeliverable 1: Generated {len(df_all_peaks)} rows for All_Participant_Peaks")
     
     # Export Deliverable 1
-    deliv1_path = os.path.join(TABLES_DIR, "PathB_All_Participant_Peaks_Rerun.xlsx")
-    artifact_deliv1_path = os.path.join(ARTIFACT_DIR, "PathB_All_Participant_Peaks_Rerun.xlsx")
+    deliv1_path = os.path.join(TABLES_DIR, "All_Participant_Peaks_Rerun.xlsx")
+    artifact_deliv1_path = os.path.join(ARTIFACT_DIR, "All_Participant_Peaks_Rerun.xlsx")
     with pd.ExcelWriter(deliv1_path) as writer:
         df_all_peaks.to_excel(writer, sheet_name="All_Participant_Peaks", index=False)
     with pd.ExcelWriter(artifact_deliv1_path) as writer:

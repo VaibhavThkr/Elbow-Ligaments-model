@@ -1,5 +1,5 @@
 """
-Phase 5: Inferential Statistical Analysis (Path B Anatomical Axis Model)
+Phase 5: Inferential Statistical Analysis (Anatomical Axis Elbow Model)
 ========================================================================
 Performs Repeated-Measures ANOVA and Post-Hoc Comparisons across all 6 participants
 with Greenhouse-Geisser sphericity correction and Holm-Bonferroni adjustments.
@@ -21,9 +21,9 @@ import pandas as pd
 import scipy.stats as stats
 from statsmodels.stats.anova import AnovaRM
 
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
 os.makedirs(TABLES_DIR, exist_ok=True)
 
 PEAKS_FILE = os.path.join(TABLES_DIR, "Table4_Participant_and_Cohort_Peaks.xlsx")
@@ -50,7 +50,7 @@ def compute_gg_epsilon(data_matrix):
 
 def run_stats():
     print("=" * 70)
-    print("RUNNING INFERENTIAL REPEATED-MEASURES ANOVA (PATH B)")
+    print("RUNNING INFERENTIAL REPEATED-MEASURES ANOVA (ANATOMICAL AXIS MODEL)")
     print("=" * 70)
     
     if not os.path.exists(PEAKS_FILE):

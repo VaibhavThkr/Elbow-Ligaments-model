@@ -1,5 +1,5 @@
 """
-Execute All Final Deliverables for Path B
+Execute All Final Deliverables for Anatomical Axis Model
 ========================================
 1. Deliverable 1: All_Participant_Peaks rows for aRCL, cRCL, pRCL, LUCL.
    - Exact match to Checks sheet for Peak Strain and Peak Elastic Force.
@@ -28,10 +28,10 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
 # Base Paths
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
-RESULTS_DIR = os.path.join(PATHB_DIR, "results")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
+RESULTS_DIR = os.path.join(PROJECT_DIR, "results")
 TABLES_DIR = os.path.join(RESULTS_DIR, "tables")
 CROSS_DIR = os.path.join(RESULTS_DIR, "Cross_Subject_Average")
 FIGS_DIR = os.path.join(RESULTS_DIR, "figures", "manuscript_figures")
@@ -180,7 +180,7 @@ def get_ligament_column(df, lig_name):
 
 def run_pipeline():
     print("=" * 80)
-    print("EXECUTING PATH B REAL-TIME PIPELINE RERUN")
+    print("EXECUTING REAL-TIME PIPELINE RERUN")
     print("=" * 80)
     
     all_peaks_rows = []
@@ -431,8 +431,8 @@ def run_pipeline():
                     df_sheet.to_excel(writer, sheet_name=sheet_name, index=False)
 
     df_all_peaks = pd.DataFrame(all_peaks_rows)
-    deliv1_path = os.path.join(TABLES_DIR, "PathB_All_Participant_Peaks_Rerun.xlsx")
-    artifact_deliv1_path = os.path.join(ARTIFACT_DIR, "PathB_All_Participant_Peaks_Rerun.xlsx")
+    deliv1_path = os.path.join(TABLES_DIR, "All_Participant_Peaks_Rerun.xlsx")
+    artifact_deliv1_path = os.path.join(ARTIFACT_DIR, "All_Participant_Peaks_Rerun.xlsx")
     with pd.ExcelWriter(deliv1_path) as writer:
         df_all_peaks.to_excel(writer, sheet_name="All_Participant_Peaks", index=False)
     with pd.ExcelWriter(artifact_deliv1_path) as writer:

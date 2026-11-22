@@ -18,11 +18,11 @@ import scipy.special as special
 from scipy.signal import find_peaks, butter, filtfilt
 from scipy.interpolate import interp1d
 
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-MODEL_DIR = os.path.join(PATHB_DIR, "models", "calibrated_devita_nlsr")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+MODEL_DIR = os.path.join(PROJECT_DIR, "models", "calibrated_devita_nlsr")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
 ORIG_SIM_DIR = os.path.join(BASE_DIR, "Simulation and Analysis")
 
 SUBJECTS = [
@@ -308,7 +308,7 @@ def main():
     df_verif = pd.DataFrame(verification_rows)
     
     # Save Excel Workbook
-    out_xlsx = os.path.join(TABLES_DIR, "PathB_Repetition_Averaged_Lengths_and_Durations.xlsx")
+    out_xlsx = os.path.join(TABLES_DIR, "Repetition_Averaged_Lengths_and_Durations.xlsx")
     with pd.ExcelWriter(out_xlsx) as writer:
         df_durations.to_excel(writer, sheet_name="Durations_and_L0_Summary", index=False)
         df_verif.to_excel(writer, sheet_name="Table4_Verification", index=False)
@@ -319,15 +319,15 @@ def main():
     print(f"\n[SAVED] Excel Workbook: {out_xlsx}")
     
     # Save standalone CSV for easy import
-    out_csv = os.path.join(TABLES_DIR, "PathB_Repetition_Averaged_Lengths_and_Durations.csv")
+    out_csv = os.path.join(TABLES_DIR, "Repetition_Averaged_Lengths_and_Durations.csv")
     df_tidy.to_csv(out_csv, index=False)
     print(f"[SAVED] Standalone CSV: {out_csv}")
     
     # Copy to artifacts directory
     artifact_dir = r"C:\Users\vaibh\.gemini\antigravity\brain\1480b829-4eb3-4948-8aae-83a7b237bdf1"
-    art_xlsx = os.path.join(artifact_dir, "PathB_Repetition_Averaged_Lengths_and_Durations.xlsx")
-    art_csv  = os.path.join(artifact_dir, "PathB_Repetition_Averaged_Lengths_and_Durations.csv")
-    df_durations.to_excel(os.path.join(artifact_dir, "PathB_Trial_Cycle_Durations_and_L0.xlsx"), index=False)
+    art_xlsx = os.path.join(artifact_dir, "Repetition_Averaged_Lengths_and_Durations.xlsx")
+    art_csv  = os.path.join(artifact_dir, "Repetition_Averaged_Lengths_and_Durations.csv")
+    df_durations.to_excel(os.path.join(artifact_dir, "Trial_Cycle_Durations_and_L0.xlsx"), index=False)
     df_tidy.to_excel(art_xlsx, index=False)
     df_tidy.to_csv(art_csv, index=False)
     print(f"[SAVED] Artifact copies updated in {artifact_dir}")

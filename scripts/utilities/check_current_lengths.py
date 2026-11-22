@@ -2,7 +2,7 @@ import os, glob
 import pandas as pd
 import numpy as np
 
-base = r'd:\Documents\Elbow joint Project\03_Path_B_Anatomical_Axis_Model\simulations'
+base = r'PROJECT_DIR\simulations'
 subjects = ['1_S1 Bicep', '2_S2 Bicep', '3_S3 Bicep', '4_S4 Bicep', '5_S5 Bicep', '6_S6 Bicep']
 
 for s in subjects:

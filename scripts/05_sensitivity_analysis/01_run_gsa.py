@@ -1,5 +1,5 @@
 """
-Phase 6: Global Sensitivity Analysis (Sobol & OAT Sweeps) (Path B)
+Phase 6: Global Sensitivity Analysis (Sobol & OAT Sweeps) (Anatomical Axis Model)
 ==================================================================
 Executes 14,336 Saltelli model evaluations (N = 1024, D = 6) across parameters:
   - L0 (+/- 10%)
@@ -24,10 +24,10 @@ from scipy import special
 from SALib.sample import sobol as sobol_sample
 from SALib.analyze import sobol as sobol_analyze
 
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-TABLES_DIR = os.path.join(PATHB_DIR, "results", "tables")
-CROSS_DIR = os.path.join(PATHB_DIR, "results", "Cross_Subject_Average")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+TABLES_DIR = os.path.join(PROJECT_DIR, "results", "tables")
+CROSS_DIR = os.path.join(PROJECT_DIR, "results", "Cross_Subject_Average")
 os.makedirs(TABLES_DIR, exist_ok=True)
 
 OUT_FILE = os.path.join(TABLES_DIR, "Global_Sensitivity_Analysis_Sobol.xlsx")
@@ -89,7 +89,7 @@ def evaluate_devita_nlsr_vectorized(L_arr, dt, L0_vec, K_vec, alpha_vec, beta_ve
 
 def run_gsa():
     print("=" * 70)
-    print("RUNNING GLOBAL MONTE CARLO SOBOL SENSITIVITY ANALYSIS (PATH B)")
+    print("RUNNING GLOBAL MONTE CARLO SOBOL SENSITIVITY ANALYSIS (ANATOMICAL AXIS MODEL)")
     print("=" * 70)
     
     # Load Cross-Subject Fast Kinematics

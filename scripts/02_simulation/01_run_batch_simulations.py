@@ -1,15 +1,15 @@
 """
-Phase 3: Parallel Batch Forward Dynamic Simulations (Path B Anatomical Axis Model)
+Phase 3: Parallel Batch Forward Dynamic Simulations (Anatomical Axis Elbow Model)
 ==================================================================================
 Executes OpenSim AnalyzeTool (ForceReporter + MuscleAnalysis) across all 35 motion
-files for all 6 subjects using the Path B calibrated models (Option A 3-fiber RCL fan)
+files for all 6 subjects using the calibrated elbow models (3-Fiber Fan 3-fiber RCL fan)
 and the compiled NLSR plugin, utilizing multi-threaded parallel execution across CPU cores.
 
 Models:
-  d:\\Documents\\Elbow joint Project\\03_Path_B_Anatomical_Axis_Model\\models\\calibrated_devita_nlsr\\Elbow_model-S{1..6}.osim
+  PROJECT_DIR\\models\\calibrated_devita_nlsr\\Elbow_model-S{1..6}.osim
 
 Outputs:
-  d:\\Documents\\Elbow joint Project\\03_Path_B_Anatomical_Axis_Model\\simulations\\<Subject>\\Analysis Results\\<Trial>\\
+  PROJECT_DIR\\simulations\\<Subject>\\Analysis Results\\<Trial>\\
     - <Trial>_ForceReporter_forces.sto
     - <Trial>_MuscleAnalysis_Length.sto
 """
@@ -22,10 +22,10 @@ import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import pandas as pd
 
-BASE_DIR = r"d:\Documents\Elbow joint Project"
-PATHB_DIR = os.path.join(BASE_DIR, "03_Path_B_Anatomical_Axis_Model")
-MODEL_DIR = os.path.join(PATHB_DIR, "models", "calibrated_devita_nlsr")
-SIM_DIR = os.path.join(PATHB_DIR, "simulations")
+BASE_DIR = r"BASE_DIR"
+PROJECT_DIR = os.path.join(BASE_DIR, "PROJECT_DIR")
+MODEL_DIR = os.path.join(PROJECT_DIR, "models", "calibrated_devita_nlsr")
+SIM_DIR = os.path.join(PROJECT_DIR, "simulations")
 
 OPENSIM_CMD = r"D:\Research_Workspace\Software_and_Tools\OpenSim 4.0\bin\opensim-cmd.exe"
 PLUGIN_DLL  = r"D:\Research_Workspace\Software_and_Tools\OpenSim 4.0\plugins\NLSR_Plugin.dll"
@@ -165,7 +165,7 @@ def run_single_simulation(task_info):
 
 def main():
     print("=" * 75)
-    print(f"STARTING PATH B PARALLEL FORWARD DYNAMIC SIMULATIONS ({MAX_WORKERS} Workers)")
+    print(f"STARTING PARALLEL FORWARD DYNAMIC SIMULATIONS ({MAX_WORKERS} Workers)")
     print("=" * 75)
 
     tasks = []
@@ -190,14 +190,14 @@ def main():
     success_count = sum(1 for r in results_summary if "PASSED" in r["Status"])
 
     print("\n" + "=" * 75)
-    print(f"PATH B PARALLEL SIMULATION COMPLETE: {success_count}/{len(tasks)} successful.")
+    print(f"PARALLEL SIMULATION COMPLETE: {success_count}/{len(tasks)} successful.")
     print(f"Total wall time elapsed: {elapsed_total:.1f}s ({elapsed_total/60:.2f} min).")
     print(f"Outputs stored in: {SIM_DIR}")
     print("=" * 75)
 
     df_audit = pd.DataFrame(results_summary)
     df_audit = df_audit.sort_values(by=["Subject_ID", "Trial"])
-    audit_path = os.path.join(PATHB_DIR, "results", "Phase3_Simulation_Batch_Audit.xlsx")
+    audit_path = os.path.join(PROJECT_DIR, "results", "Phase3_Simulation_Batch_Audit.xlsx")
     df_audit.to_excel(audit_path, index=False)
     print(f"Audit log saved to: {audit_path}")
 

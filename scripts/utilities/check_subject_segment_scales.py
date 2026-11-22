@@ -6,7 +6,7 @@ def p3d(s):
 
 print("Participant Segment Lengths from Markers:")
 for s in ['S1', 'S2', 'S3', 'S4', 'S5', 'S6']:
-    p = rf'd:\Documents\Elbow joint Project\Simulation and Analysis\Opensim Elbow model\Elbow_model-{s}.osim'
+    p = rf'BASE_DIR\Simulation and Analysis\Opensim Elbow model\Elbow_model-{s}.osim'
     t = ET.parse(p).getroot()
     
     m_dict = {}
