@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions & OS files
+*.so
+*.dll
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# OpenSim runtime logs, temp files & large solver output dumps (>13 GB)
+*.log
+opensim.log
+setup_analyze.xml.bak
+*.sto
+
+# Results directory (per user instruction)
+results/
+
+# Virtual environments
+venv/
+env/
+.env
+.venv/

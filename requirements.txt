@@ -1,0 +1,15 @@
+# Core scientific & numerical computing
+numpy>=1.22.0
+scipy>=1.8.0
+pandas>=1.4.0
+openpyxl>=3.0.9
+
+# Visualization & Image processing
+matplotlib>=3.5.0
+pillow>=9.0.0
+
+# Statistical modeling
+statsmodels>=0.13.0
+
+# Global Sensitivity Analysis
+SALib>=1.4.5
